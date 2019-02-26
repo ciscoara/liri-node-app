@@ -15,7 +15,7 @@ let Spotify = require('node-spotify-api');
 //input
 let request = require('request');
 var inquirer = require('inquirer');
-//var queryUrl = "https://rest.bandsintown.com/artists/" + inquirer.answers + "/events?app_id=codingbootcamp";
+var queryUrl = "https://rest.bandsintown.com/artists/" + inquirer.answers + "/events?app_id=codingbootcamp";
 
 
 // Function that writes all the data from output to the logfile
@@ -58,7 +58,7 @@ function getMeSpotify(songName) {
         }
     });
 
-
+}
     let getMovie = function (movieName) {
 
         if (!movieName) {
@@ -111,10 +111,14 @@ function getMeSpotify(songName) {
     }
     function doWhatItSays() {
         // Reads the random text file and passes it to the spotify function
-        fs.readFile("random.txt", "utf8", function (error, data) {
+        fs.readFile("random.txt", "utf8", function (err, data) {
+            if (err) {
+                return console.log(err);
+            } else {
             getMeSpotify(data);
-        });
-    }
+        }});
+    };
+
 
     let questions = [{
         type: 'list',
@@ -178,4 +182,4 @@ function getMeSpotify(songName) {
                     console.log('You broke LIRI...');
             }
         });
-    }
+    
