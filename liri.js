@@ -17,6 +17,9 @@ let request = require('request');
 var inquirer = require('inquirer');
 var queryUrl = "https://rest.bandsintown.com/artists/" + inquirer.answers + "/events?app_id=codingbootcamp";
 
+let space = "\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
+let header = "================= Extraordinary Liri found this ...==================";
+
 
 // Function that writes all the data from output to the logfile
 function writeToLog(data) {
@@ -38,7 +41,7 @@ function writeToLog(data) {
 // Spotify function, Spotify api
 function getMeSpotify(songName) {
     let spotify = new Spotify(keys.spotify);
-    // If there is no song name, set the song to Blink 182's What's my age again
+    // If there is no song name, set the song to The Sign, from Ace of Base
     if (!songName) {
         songName = "The Sign";
     }
@@ -78,12 +81,10 @@ function getMeSpotify(songName) {
                     space + 'Title: ' + jsonData.Title +
                     space + 'Year: ' + jsonData.Year +
                     space + 'Rated: ' + jsonData.Rated +
-                    space + 'IMDB Rating: ' + jsonData.imdbRating +
                     space + 'Country: ' + jsonData.Country +
                     space + 'Language: ' + jsonData.Language +
                     space + 'Plot: ' + jsonData.Plot +
                     space + 'Actors: ' + jsonData.Actors +
-                    space + 'Tomato Rating: ' + jsonData.Ratings[1].Value +
                     space + 'IMDb Rating: ' + jsonData.imdbRating + "\n";
 
                 console.log(output);
@@ -109,6 +110,7 @@ function getMeSpotify(songName) {
         }
         )
     }
+    
     function doWhatItSays() {
         // Reads the random text file and passes it to the spotify function
         fs.readFile("random.txt", "utf8", function (err, data) {
