@@ -47,9 +47,3 @@ Do What it Says
 node liri.js do-what-it-says
 
 Using the fs node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-
-Authors
-Marissa Linback
-
-License
-University of Utah
