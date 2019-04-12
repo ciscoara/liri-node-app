@@ -113,20 +113,22 @@ function getMeSpotify(songName) {
             }
         }
         )
-    };
+    }
     
     var doWhatItSays = function doWhatItSays() {
         fs.readFile("random.txt", "utf8", function (err, data) {
             if(err) throw err;
             var dataArr = data.slipt(',');
+
             if (dataArr.length == 2) {
                 pick(dataArr[0], dataArr[1]);
-            } else if (dataArr.length == 1) {
+            } 
+            else if (dataArr.length == 1) {
                 pick(dataArr[0]);
             
             }
         });
-    };
+    }
 
 
     let questions = [{
@@ -159,14 +161,14 @@ function getMeSpotify(songName) {
             return answers.programs == 'Concert';
         }
     },
-    {
-        type: 'input',
-        name: 'doWhatItSaysChoice',
-        message: 'Want liri to do a trick?',
-        when: function (answers) {
-            return answers.programs == 'Do What It Says';
-        }
-    },
+    // {
+    //     type: 'input',
+    //     name: 'doWhatItSaysChoice',
+    //     message: 'Tell Liri "Do What It Says"',
+    //     when: function (answers) {
+    //         return answers.programs == 'Do What It Says';
+    //     }
+    // },
     ];
 
     inquirer
