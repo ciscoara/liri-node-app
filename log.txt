@@ -17,3 +17,33 @@
               IMDb Rating: 8.2
 
 
+================= LIRI FOUND THIS FOR YOU...==================
+              Song Name: 'I WANT IT THAT WAY'
+              Album Name: The Hits--Chapter One
+              Artist Name: Backstreet Boys
+              URL: https://open.spotify.com/album/1NslKOZobWxINFaFkLol3r
+
+
+
+
+              ================= Extraordinary Liri found this ...==================
+              Title: undefined
+              Year: undefined
+              Rated: undefined
+              Country: undefined
+              Language: undefined
+              Plot: undefined
+              Actors: undefined
+              IMDb Rating: undefined
+
+
+
+              ================= Extraordinary Liri found this ...==================
+              Title: Finding Dory
+              Year: 2016
+              Rated: PG
+              Country: USA
+              Language: English, Indonesian
+              Plot: The friendly but forgetful blue tang fish, Dory, begins a search for her long-lost parents, and everyone learns a few things about the real meaning of family along the way.
+              Actors: Ellen DeGeneres, Albert Brooks, Ed O'Neill, Kaitlin Olson
+              IMDb Rating: 7.3

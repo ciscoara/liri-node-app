@@ -178,7 +178,7 @@ function getMeSpotify(songName) {
                     getConcerts();
                     break;
                 case 'Do What It Says':
-                doWhatItSays();
+                doWhatItSays(answers.doWhatItSaysChoice);
                     break;
                 default:
                     console.log('You broke LIRI...');
