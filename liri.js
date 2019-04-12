@@ -15,7 +15,7 @@ let Spotify = require('node-spotify-api');
 //input
 let request = require('request');
 var inquirer = require('inquirer');
-var queryUrl = "https://rest.bandsintown.com/artists/" + inquirer.answers + "/events?app_id=codingbootcamp";
+
 
 let space = "\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
 let header = "================= Extraordinary Liri found this ...==================";
@@ -93,14 +93,18 @@ function getMeSpotify(songName) {
         });
     };
 
-    function getConcerts() {
+    let getConcerts = function (band) {
+        if (!band) {
+            band = "Muse";
+        }
+        var queryUrl = "https://rest.bandsintown.com/artists/"+ band +"/events?app_id=codingbootcamp";
         axios.get(queryUrl).then(function (response) {
             for (var i = 0; i < response.data.length; i++) {
                 var tourArr = response.data[i];
+                console.log("------------------------------------");
                 console.log("Venue: " + tourArr.venue.name);
                 console.log("City: " + tourArr.venue.city);
-                // console.log("Date of Tour: " + time);
-                console.log(tourArr.datetime);
+                console.log("Date of Tour"+ tourArr.datetime);
                 //  console.log(response)
 
             }
@@ -109,16 +113,19 @@ function getMeSpotify(songName) {
             }
         }
         )
-    }
+    };
     
-    function doWhatItSays() {
-        // Reads the random text file and passes it to the spotify function
+    var doWhatItSays = function doWhatItSays() {
         fs.readFile("random.txt", "utf8", function (err, data) {
-            if (err) {
-                return console.log(err);
-            } else {
-            getMeSpotify(data);
-        }});
+            if(err) throw err;
+            var dataArr = data.slipt(',');
+            if (dataArr.length == 2) {
+                pick(dataArr[0], dataArr[1]);
+            } else if (dataArr.length == 1) {
+                pick(dataArr[0]);
+            
+            }
+        });
     };
 
 
@@ -147,7 +154,7 @@ function getMeSpotify(songName) {
     {
         type: 'input',
         name: 'concertChoice',
-        message: 'Would you like to search for concerts near by?',
+        message: 'What band do you want to see in concert?',
         when: function (answers) {
             return answers.programs == 'Concert';
         }
@@ -175,10 +182,10 @@ function getMeSpotify(songName) {
                     getMovie(answers.movieChoice);
                     break;
                 case 'Concert':
-                    getConcerts();
+                    getConcerts(answers.concertChoice);
                     break;
                 case 'Do What It Says':
-                doWhatItSays(answers.doWhatItSaysChoice);
+                doWhatItSays();
                     break;
                 default:
                     console.log('You broke LIRI...');
